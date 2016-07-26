@@ -1,0 +1,50 @@
+doctype html
+html
+  head
+    title= title
+    style.
+        body{
+            padding-top:'60px'
+            padding-bottom:'40px'
+        }
+    link(rel='stylesheet', href='/stylesheets/bootstrap.css')
+    link(rel='stylesheet',href='/stylesheets/bootstrap-theme.css')
+    script(src='http://libs.baidu.com/jquery/2.1.4/jquery.min.js')
+    script(src='/javascripts/bootstrap.js')
+  body
+    -var div_classes = ['navbar','navbar-default']
+    -var ul_classes = ['nav','navbar-nav']
+    -var a_classes = ['btn', 'btn-navbar']
+    -var succ_classes = ['alert','alert-success']
+    -var err_classes = ['alert','alert-error']
+    div(class=div_classes)
+        .navbar-inner
+            .container
+                a(class=a_classes data-toggle='collapse' data-target='.nav-collapse')
+                    span.icon-bar
+                    span.icon-bar
+                    span.icon-bar
+                a.brand(href='/')='WebChat'
+                .nav-collapse
+                    ul(class=ul_classes)
+                        li.active
+                            a(href='/')='首页'
+                        if user
+                            li
+                                a(href='/users/logout')='退出'
+                        else
+                            li
+                                a(href='/login')='登录'
+                            li
+                                a(href='/reg')='注册'
+    div.container(id='container')
+        if success
+            div(class='succ_classes')=success
+        if error
+            div(class='err_classes')=error
+        block content
+        hr
+        footer
+            p=2016
+                a(href='http://www.baidu.com/' target='_blank')='百度'
+

@@ -1,0 +1,19 @@
+extends layout
+
+block content
+    -var form_classes = ['well','form-inline','center']
+    -var button_classes = ['btn','btn-success']
+    -var i_classes = ['icon-comment','icon-white']
+    if user
+        form(class=form_classes method='post' action='/users/post' style='text-align:center;')
+            input.span8(type='text' name='post')
+            button(class=button_classes type='submit')='发言'
+                i.i_classes
+    each post,index in posts
+        .span4
+            h2
+                a(href='/users/'+post.name)=post.name+'说'
+            p
+                small=post.time
+            p=post.post
+

@@ -1,0 +1,27 @@
+extends layout
+
+block content
+    -var body_a1_classes = ['btn','btn-primary','btn-large']
+    -var body_a2_classes = ['btn','btn-large']
+    if !user
+        .hero-unit
+            h1='欢迎来到Microblog'
+            p='Microblog 是一个基于Node.js的微博系统'
+            p
+                a(class=body_a1_classes href='/login')='登录'
+                a(class=body_a2_classes href='/reg')='立即注册'
+    else
+        form(class=form_classes method='post' action='/users/post' style='text-align:center;')
+            input.span8(type='text' name='post')
+            button(class=button_classes type='submit')='发言'
+                i.i_classes
+    .row
+        each post,index in posts
+            .span4
+                h2
+                    a(href='/users/'+post.name)=post.name+'说'
+                p
+                    small=post.time
+                p=post.post
+
+

@@ -1,0 +1,23 @@
+extends layout
+
+block content
+    -var button_classes = ['btn','btn-primary']
+    form.form-horizontal(method='post')
+        fieldset
+            legend='用户注册'
+            .control-group
+                label.control-label(for='username')='用户名'
+                .controls
+                    input.input-xlarge(type='text' id='username' name='username')
+                    p.help-block='您的账户名称，用于登录和显示。'
+            .control-group
+                label.control-label(for='password')='登录密码'
+                .controls
+                    input.input-xlarge(id='password' type='password' name='password')
+            .control-group
+                label.control-label(for='password-repeat')='确认密码'
+                .controls
+                    input.input-xlarge(id='password-repeat' type='password' name='password-repeat')
+            .form-actions
+                button(class=button_classes type='submit')='注册'
+
